@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <div class="app">Hello Angular!</div> `,
+  template: `
+    <div class="app">
+      {{ message }}
+      {{ message === 'Hello World!' }}
+      {{ message.length < 6 }}
+      {{ message.length ? message : 'Nothing Here...' }}
+    </div>
+  `,
   styles: [
     `
       .app {
@@ -15,7 +22,11 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class AppComponent implements OnInit {
+  message!: string;
+
   ngOnInit() {
+    this.message = 'Hello World!';
+
     console.log('Hello World!');
   }
 }

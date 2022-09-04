@@ -5,23 +5,19 @@ import { Donut } from '../../models/donut.model';
   selector: 'donut-list',
   template: `
     <div>
-			<div>
-				{{ donut.name }}
-				{{ donut.price }}
-			</div>
-		</div>
+			<donut-card></donut-card>
+    </div>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class DonutListComponent implements OnInit {
-	donut!: Donut;
-	donuts!: Donut[];
+  donut!: Donut;
+  donuts!: Donut[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-		this.donuts = [
+    this.donuts = [
       {
         id: 'adf*$',
         name: 'Just Chocolate',
@@ -45,7 +41,6 @@ export class DonutListComponent implements OnInit {
       },
     ];
 
-		this.donut = this.donuts[0];
+    this.donut = this.donuts[0];
   }
-
 }

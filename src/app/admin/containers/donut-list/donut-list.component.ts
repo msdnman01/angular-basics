@@ -3,13 +3,7 @@ import { Donut } from '../../models/donut.model';
 
 @Component({
   selector: 'donut-list',
-  template: `
-    <div>
-      <donut-card [donut]="donuts[0]"></donut-card>
-      <donut-card [donut]="donuts[1]"></donut-card>
-      <donut-card [donut]="donuts[2]"></donut-card>
-    </div>
-  `,
+  templateUrl: 'donut-list.component.html',
   styles: [],
 })
 export class DonutListComponent implements OnInit {

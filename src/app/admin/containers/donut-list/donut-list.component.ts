@@ -37,4 +37,8 @@ export class DonutListComponent implements OnInit {
       },
     ];
   }
+
+  trackById(index: number, value: Donut) {
+    return value.id;
+  }
 }

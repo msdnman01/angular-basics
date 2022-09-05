@@ -3,6 +3,13 @@
 		<donut-card
       *ngFor="let donut of donuts; trackBy: trackById" [donut]="donut">
     </donut-card>
+
+    <div *ngFor="let donut of donuts; index as i; odd as odd; even as even"
+      [style.color]="even ? 'red' : 'green'">
+      {{i+1}}
+      {{odd}}
+      {{even}}
+    </div>
 	</ng-container>
 
 	<ng-template #nothing>

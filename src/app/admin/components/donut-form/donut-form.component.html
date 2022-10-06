@@ -51,7 +51,11 @@
   </label>
 
   <button type="button" class="btn btn--green" (click)="handleCreate(form)">Create</button>
+
   <button type="button" class="btn btn--green" [disabled]="form.untouched" (click)="handleUpdate(form)">Update</button>
+
+  <button type="button" class="btn btn--green" (click)="handleDelete()">Delete</button>
+
   <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
 
   <div class="donut-form-working" *ngIf="form.valid && form.submitted">

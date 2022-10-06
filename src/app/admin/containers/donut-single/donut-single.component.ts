@@ -22,4 +22,8 @@ export class DonutSingleComponent implements OnInit {
   onUpdate(donut: Donut) {
     this.donutService.update(donut);
   }
+
+  onDelete(donut: Donut) {
+    this.donutService.delete(donut);
+  }
 }

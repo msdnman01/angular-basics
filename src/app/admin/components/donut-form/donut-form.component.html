@@ -51,9 +51,11 @@
   </label>
 
   <button type="submit" class="btn btn--green">Create</button>
-  <button type="button" class="btn btn--grey" (click)="form.resetForm({ name: 'initial state'})">Reset Form</button>
+  <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
 
-  {{ form.submitted }}
+  <div class="donut-form-working" *ngIf="form.valid && form.submitted">
+    Working...
+  </div>
 
   <pre>{{ form.value | json }}</pre>
 </form>

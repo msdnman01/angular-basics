@@ -49,8 +49,11 @@
       <div class="donut-form-error" *ngIf="description.errors?.required">Description is required.</div>
     </ng-container>
   </label>
-{{form.valid}}
+
   <button type="submit" class="btn btn--green">Create</button>
+  <button type="button" class="btn btn--grey" (click)="form.resetForm({ name: 'initial state'})">Reset Form</button>
+
+  {{ form.submitted }}
 
   <pre>{{ form.value | json }}</pre>
 </form>

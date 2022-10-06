@@ -12,11 +12,14 @@ export class DonutSingleComponent implements OnInit {
   constructor(private donutService: DonutService) { }
 
   ngOnInit(): void {
-    this.donut = this.donutService.readOne('xxx');
+    this.donut = this.donutService.readOne('9dkg8a');
   }
 
   onCreate(donut: Donut) {
     this.donutService.create(donut);
   }
 
+  onUpdate(donut: Donut) {
+    this.donutService.update(donut);
+  }
 }

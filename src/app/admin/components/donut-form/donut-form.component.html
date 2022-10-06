@@ -1,4 +1,4 @@
-<form class="donut-form" (ngSubmit)="handleSubmit(form)" #form="ngForm">
+<form class="donut-form" #form="ngForm">
   <label>
     <span>Name</span>
     <input type="text" name="name" class="input" minlength="5" required [ngModel]="donut.name" [ngModelOptions]="{ updateOn: 'blur' }" #name="ngModel" />
@@ -50,7 +50,8 @@
     </ng-container>
   </label>
 
-  <button type="submit" class="btn btn--green">Create</button>
+  <button type="button" class="btn btn--green" (click)="handleCreate(form)">Create</button>
+  <button type="button" class="btn btn--green" [disabled]="form.untouched" (click)="handleUpdate(form)">Update</button>
   <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
 
   <div class="donut-form-working" *ngIf="form.valid && form.submitted">

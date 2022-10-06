@@ -7,10 +7,18 @@ import { Donut } from '../../models/donut.model';
   styleUrls: ['donut-single.component.scss']
 })
 export class DonutSingleComponent implements OnInit {
-
+  donut!: Donut;
   constructor() { }
 
   ngOnInit(): void {
+    this.donut = {
+        id: '9snur5',
+        name: 'Just Chocolate',
+        icon: 'just-chocolate',
+        price: 199,
+				promo: 'limited',
+        description: 'For the pure chocoholic',
+      };
   }
 
   onCreate(donut: Donut) {

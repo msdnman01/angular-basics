@@ -40,8 +40,8 @@
     <span>Description</span>
     <textarea name="description" class="input input--textarea" required ngModel></textarea>
   </label>
-
-  <button type="submit" class="btn btn--green">Create</button>
+{{form.valid}}
+  <button type="submit" class="btn btn--green" [disabled]="form.invalid">Create</button>
 
   <pre>{{ form.value | json }}</pre>
 </form>

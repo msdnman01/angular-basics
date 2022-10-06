@@ -23,6 +23,8 @@ export class DonutFormComponent {
   handleSubmit(form: NgForm) {
     if (form.valid) {
       console.log(form.value);
+    } else {
+      form.form.markAllAsTouched();
     }
   }
 }

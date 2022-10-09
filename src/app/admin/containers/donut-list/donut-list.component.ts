@@ -8,7 +8,7 @@ import { DonutService } from '../../services/donut.service';
   styles: [],
 })
 export class DonutListComponent implements OnInit {
-  donuts!: Donut[];
+  donuts: Donut[] = [];
 
   constructor(private donutService: DonutService) {}
 

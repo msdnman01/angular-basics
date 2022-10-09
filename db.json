@@ -37,14 +37,6 @@
       "icon": "zesty-lemon",
       "price": 169,
       "description": "For the lemon heads"
-    },
-    {
-      "name": "New Donut",
-      "icon": "strawberry-glaze",
-      "price": 233,
-      "promo": "limited",
-      "description": "new one",
-      "id": "ymLN0Wt"
     }
   ]
 }

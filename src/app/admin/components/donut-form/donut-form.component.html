@@ -1,35 +1,70 @@
 <form class="donut-form" #form="ngForm" *ngIf="donut; else loading">
   <label>
     <span>Name</span>
-    <input type="text" name="name" class="input" minlength="5" required [ngModel]="donut.name" [ngModelOptions]="{ updateOn: 'blur' }" #name="ngModel" />
+    <input
+      type="text"
+      name="name"
+      class="input"
+      minlength="5"
+      required
+      [ngModel]="donut.name"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      #name="ngModel"
+    />
     <ng-container *ngIf="name.invalid && name.touched">
-      <div class="donut-form-error" *ngIf="name.errors?.required">Name is required.</div>
-      <div class="donut-form-error" *ngIf="name.errors?.minlength">The minimun length of a name is 5.</div>
+      <div class="donut-form-error" *ngIf="name.errors?.required">
+        Name is required.
+      </div>
+      <div class="donut-form-error" *ngIf="name.errors?.minlength">
+        The minimun length of a name is 5.
+      </div>
     </ng-container>
   </label>
 
   <label>
     <span>Icon</span>
-    <select name="icon" class="input input--select" required [ngModel]="donut.icon" #icon="ngModel">
+    <select
+      name="icon"
+      class="input input--select"
+      required
+      [ngModel]="donut.icon"
+      #icon="ngModel"
+    >
       <option *ngFor="let icon of icons" [ngValue]="icon">{{ icon }}</option>
     </select>
     <ng-container *ngIf="icon.invalid && icon.touched">
-      <div class="donut-form-error" *ngIf="icon.errors?.required">Icon is required.</div>
+      <div class="donut-form-error" *ngIf="icon.errors?.required">
+        Icon is required.
+      </div>
     </ng-container>
- </label>
+  </label>
 
   <label>
     <span>Price</span>
-    <input type="number" name="price" class="input" required [ngModel]="donut.price" #price="ngModel" />
+    <input
+      type="number"
+      name="price"
+      class="input"
+      required
+      [ngModel]="donut.price"
+      #price="ngModel"
+    />
     <ng-container *ngIf="price.invalid && price.touched">
-      <div class="donut-form-error" *ngIf="price.errors?.required">Price is required.</div>
+      <div class="donut-form-error" *ngIf="price.errors?.required">
+        Price is required.
+      </div>
     </ng-container>
   </label>
 
   <div class="donut-form-radios">
     <p class="donut-form-radios-label">Promo:</p>
     <label>
-      <input type="radio" name="promo" [value]="undefined" [ngModel]="donut.promo" />
+      <input
+        type="radio"
+        name="promo"
+        [value]="undefined"
+        [ngModel]="donut.promo"
+      />
       <span>None</span>
     </label>
     <label>
@@ -37,26 +72,68 @@
       <span>New</span>
     </label>
     <label>
-      <input type="radio" name="promo" value="limited" [ngModel]="donut.promo" />
+      <input
+        type="radio"
+        name="promo"
+        value="limited"
+        [ngModel]="donut.promo"
+      />
       <span>Limited</span>
     </label>
   </div>
 
   <label>
     <span>Description</span>
-    <textarea name="description" class="input input--textarea" required [ngModel]="donut.description" #description="ngModel"></textarea>
+    <textarea
+      name="description"
+      class="input input--textarea"
+      required
+      [ngModel]="donut.description"
+      #description="ngModel"
+    ></textarea>
     <ng-container *ngIf="description.invalid && description.touched">
-      <div class="donut-form-error" *ngIf="description.errors?.required">Description is required.</div>
+      <div class="donut-form-error" *ngIf="description.errors?.required">
+        Description is required.
+      </div>
     </ng-container>
   </label>
 
-  <button type="button" class="btn btn--green" (click)="handleCreate(form)">Create</button>
+  <button
+    type="button"
+    *ngIf="!isEdit"
+    class="btn btn--green"
+    (click)="handleCreate(form)"
+  >
+    Create
+  </button>
 
-  <button type="button" class="btn btn--green" [disabled]="form.untouched" (click)="handleUpdate(form)">Update</button>
+  <button
+    type="button"
+    *ngIf="isEdit"
+    class="btn btn--green"
+    [disabled]="form.untouched"
+    (click)="handleUpdate(form)"
+  >
+    Update
+  </button>
 
-  <button type="button" class="btn btn--green" (click)="handleDelete()">Delete</button>
+  <button
+    type="button"
+    *ngIf="isEdit"
+    class="btn btn--green"
+    (click)="handleDelete()"
+  >
+    Delete
+  </button>
 
-  <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
+  <button
+    type="button"
+    *ngIf="form.touched || isEdit"
+    class="btn btn--grey"
+    (click)="form.resetForm()"
+  >
+    Reset Form
+  </button>
 
   <div class="donut-form-working" *ngIf="form.valid && form.submitted">
     Working...

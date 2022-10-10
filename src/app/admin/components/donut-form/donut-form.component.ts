@@ -5,10 +5,11 @@ import { Donut } from '../../models/donut.model';
 @Component({
   selector: 'donut-form',
   templateUrl: 'donut-form.component.html',
-  styleUrls: ['donut-form.component.scss']
+  styleUrls: ['donut-form.component.scss'],
 })
 export class DonutFormComponent {
   @Input() donut!: Donut;
+  @Input() isEdit!: boolean;
   @Output() create = new EventEmitter<Donut>();
   @Output() update = new EventEmitter<Donut>();
   @Output() delete = new EventEmitter<Donut>();
@@ -20,10 +21,10 @@ export class DonutFormComponent {
     'sour-supreme',
     'strawberry-glaze',
     'vanilla-sundae',
-    'zesty-lemon'
+    'zesty-lemon',
   ];
 
-  constructor() { }
+  constructor() {}
 
   handleCreate(form: NgForm) {
     if (form.valid) {
@@ -35,7 +36,7 @@ export class DonutFormComponent {
 
   handleUpdate(form: NgForm) {
     if (form.valid) {
-      this.update.emit({ id: this.donut.id,...form.value });
+      this.update.emit({ id: this.donut.id, ...form.value });
     } else {
       form.form.markAllAsTouched();
     }

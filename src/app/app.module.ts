@@ -15,12 +15,16 @@ export const routes: Routes = [
       { path: 'donuts', component: DonutListComponent },
       { path: 'donut', component: DonutSingleComponent },
       { path: '', pathMatch: 'full', redirectTo: 'donuts' }
-    ]
+    ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'admin'
+    redirectTo: 'admin',
+  },
+  {
+    path: '**',
+    redirectTo: 'admin',
   }
 ];
 

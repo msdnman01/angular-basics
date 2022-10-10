@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Donut } from '../../models/donut.model';
 import { DonutService } from '../../services/donut.service';
 
 @Component({
   selector: 'donut-single',
   templateUrl: 'donut-single.component.html',
-  styleUrls: ['donut-single.component.scss']
+  styleUrls: ['donut-single.component.scss'],
 })
 export class DonutSingleComponent implements OnInit {
   donut!: Donut;
-  constructor(private donutService: DonutService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private donutService: DonutService
+  ) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
     this.donutService
-      .readOne('xxx')
+      .readOne(id)
       .subscribe((donut: Donut) => (this.donut = donut));
   }
 
@@ -24,18 +31,15 @@ export class DonutSingleComponent implements OnInit {
   }
 
   onUpdate(donut: Donut) {
-    this.donutService
-      .update(donut)
-      .subscribe({
-        next: () => console.log('Updated successfully!'),
-        error: (err) => console.log('onUpdate error:', err)
-      });
+    this.donutService.update(donut).subscribe({
+      next: () => console.log('Updated successfully!'),
+      error: (err) => console.log('onUpdate error:', err),
+    });
   }
 
   onDelete(donut: Donut) {
     this.donutService
       .delete(donut)
       .subscribe(() => console.log('Deleted successfully!'));
-
   }
 }
